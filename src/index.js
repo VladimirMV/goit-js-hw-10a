@@ -5,8 +5,8 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 import fetchCountries from './js/fetchCountries.js';
 
-import templateCountryList from './templates/country-list.hbs';
-import templateCountryInfo from './templates/country-info.hbs';
+// import templateCountryList from './templates/country-list.hbs';
+// import templateCountryInfo from './templates/country-info.hbs';
 
 const DEBOUNCE_DELAY = 300;
 
@@ -69,19 +69,19 @@ function renderMarkup(countries) {
     );
   } else {
     
-    markupList = templateCountryList(...countries);
-    console.log("markupList = ", markupList);
-    console.log(" Делаем markupInfo =" ,...countries);
-    markupInfo = templateCountryInfo(...countries);
+    // markupList = templateCountryList(...countries);
+    // console.log("markupList = ", markupList);
+    // console.log(" Делаем markupInfo =" ,...countries);
+    // markupInfo = templateCountryInfo(...countries);
     
 
-    console.log("markupInfo =",markupInfo);
+    //console.log("markupInfo =",markupInfo);
     changeBorderColor('lightgreen');
 
-    refs.countryInfoEl.insertAdjacentHTML('afterbegin', markupInfo);
+   // refs.countryInfoEl.insertAdjacentHTML('afterbegin', markupInfo);
   }
 
-  refs.countryListEl.insertAdjacentHTML('afterbegin', markupList);
+  //refs.countryListEl.insertAdjacentHTML('afterbegin', markupList);
 }
 
  
