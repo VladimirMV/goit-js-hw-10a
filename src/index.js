@@ -2,11 +2,9 @@ import './css/styles.css';
 
 import _debounce from 'lodash.debounce';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-
 import fetchCountries from './js/fetchCountries.js';
+import { countryСardTeemplate, countryListTemplate } from './js/markupTemplate';
 
-// import templateCountryList from './templates/country-list.hbs';
-// import templateCountryInfo from './templates/country-info.hbs';
 
 const DEBOUNCE_DELAY = 300;
 
@@ -16,6 +14,7 @@ const refs = {
   countryInfoEl: document.querySelector('.country-info'),
 };
 
+
 refs.inputEl.addEventListener(
   'input',
   _debounce(onSearchCountryInput, DEBOUNCE_DELAY)
@@ -23,6 +22,7 @@ refs.inputEl.addEventListener(
 
 const clearMarkup = element => (element.innerHTML = '');
 const changeBorderColor = color => (refs.inputEl.style.backgroundColor = color);
+
 
 function onSearchCountryInput(event) {
   clearMarkup(refs.countryListEl);
@@ -37,9 +37,6 @@ function onSearchCountryInput(event) {
   fetchCountries(event.target.value.trim())
     .then(countries => { 
 
-        console.log(countries);
-    console.log(event.target.value.trim());
-
       if (countries.length > 10) {
         Notify.info(
           '⚠️Too many matches found. Please enter a more specific name.'
@@ -48,11 +45,10 @@ function onSearchCountryInput(event) {
         return;
       }
       renderMarkup(countries);
+    }).catch(() => {
+      Notify.failure('❌Oops, there is no country with that name');
+      changeBorderColor('lightcoral');
     });
-    // .catch(() => {
-    //   Notify.failure('❌Oops, there is no country with that name');
-    //   changeBorderColor('lightcoral');
-    // });
 }
 
 function renderMarkup(countries) {
@@ -64,24 +60,21 @@ function renderMarkup(countries) {
   if (countries.length >= 2) {
     markupList = countries.reduce(
       (previousValue, currentValue) =>
-        (previousValue += templateCountryList(currentValue)),
+        (previousValue += countryListTemplate(currentValue)),
       ''
     );
   } else {
     
-    // markupList = templateCountryList(...countries);
-    // console.log("markupList = ", markupList);
-    // console.log(" Делаем markupInfo =" ,...countries);
-    // markupInfo = templateCountryInfo(...countries);
-    
-
-    //console.log("markupInfo =",markupInfo);
+     markupList = countryListTemplate(...countries);
+     markupInfo = countryСardTeemplate(...countries);
+     
+  
     changeBorderColor('lightgreen');
 
-   // refs.countryInfoEl.insertAdjacentHTML('afterbegin', markupInfo);
+    refs.countryInfoEl.insertAdjacentHTML('afterbegin', markupInfo);
   }
 
-  //refs.countryListEl.insertAdjacentHTML('afterbegin', markupList);
+  refs.countryListEl.insertAdjacentHTML('afterbegin', markupList);
 }
 
  

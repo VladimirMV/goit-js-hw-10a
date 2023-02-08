@@ -1,15 +1,26 @@
-"dependencies": {
-    "handlebars": "^4.7.7",
-    "lodash.debounce": "^4.0.8",
-    "modern-normalize": "^1.1.0",
-    "notiflix": "^3.2.5",
-    "parcel-bundler": "^1.12.5"
-  },
-  "devDependencies": {
-    "@parcel/transformer-sass": "^2.6.0",
-    "parcel": "^2.6.0",
-    "parcel-plugin-handlebars-precompile": "^1.0.2",
-    "parcel-reporter-clean-dist": "^1.0.4",
-    "parcel-transformer-hbs": "^1.0.4",
-    "posthtml-include": "^1.7.4"
-  },
+<li class='country-list__item'>
+<img class='country-list__img' src='{{flags.svg}}' alt='{{name.official}}' />
+<span class='country-list__name'>{{name.common}}</span>
+</li>
+
+
+
+<p class='country-info__capital'>
+  <span class='weight'>Capital:</span>
+  {{capital}}
+</p>
+<p class='ci__population'>
+  <span class='weight'>Population:</span>
+  {{population}}
+</p>
+<p class='ci__languages-text'>
+  <span class='weight'>Languages:</span>
+  {{#each languages}}
+
+    {{#if @last}}
+      <span class='ci__language'> {{this}}</span>
+    {{else}}
+      <span class='ci__language'> {{this}},</span>
+    {{/if}}
+  {{/each}}
+</p> 
