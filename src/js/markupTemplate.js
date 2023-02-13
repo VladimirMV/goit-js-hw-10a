@@ -2,9 +2,9 @@ export function countryСardTeemplate({ flags, name, capital, population, langua
     return `
       
     
-        <p class="country-info__capital"><span class="weight">Capital:</span> ${capital}</p>
-        <p class="ci__population"><span class="weight">Population:</span> ${population}</p>
-        <p class="ci__languages-text"><span class="weight">Languages:</span> ${Object.values(
+        <p class="country-info"><span class="weight">Capital:</span> ${capital}</p>
+        <p class="country-info"><span class="weight">Population:</span> ${population}</p>
+        <p class="country-info"><span class="weight">Languages:</span> ${Object.values(
           languages,
         )}</p>
       
