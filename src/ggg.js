@@ -1,11 +1,12 @@
 import './css/styles.css';
+
 import _debounce from 'lodash.debounce';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import fetchCountries from './js/fetchCountries.js';
-import { countryСardTeemplate, countryListTemplate } from './js/markupTemplate';
-import {showCountriesCoose} from './js/map.js';
 
- 
+import fetchCountries from './js/fetchCountries.js';
+
+import templateCountryList from './templates/country-list.hbs';
+import templateCountryInfo from './templates/country-info.hbs';
 
 const DEBOUNCE_DELAY = 300;
 
@@ -15,7 +16,6 @@ const refs = {
   countryInfoEl: document.querySelector('.country-info'),
 };
 
-
 refs.inputEl.addEventListener(
   'input',
   _debounce(onSearchCountryInput, DEBOUNCE_DELAY)
@@ -24,13 +24,10 @@ refs.inputEl.addEventListener(
 const clearMarkup = element => (element.innerHTML = '');
 const changeBorderColor = color => (refs.inputEl.style.backgroundColor = color);
 
-
 function onSearchCountryInput(event) {
   clearMarkup(refs.countryListEl);
   clearMarkup(refs.countryInfoEl);
-  const audio = document.getElementById('gimn-ua');
-  audio.pause(); 
-  audio.currentTime = 0;
+
   changeBorderColor('white');
 
   if (!event.target.value.trim()) {
@@ -38,9 +35,8 @@ function onSearchCountryInput(event) {
   }
 
   fetchCountries(event.target.value.trim())
-    .then(countries => { 
-
-      if (countries.length > 5) {
+    .then(countries => {
+      if (countries.length > 10) {
         Notify.info(
           '⚠️Too many matches found. Please enter a more specific name.'
         );
@@ -48,13 +44,11 @@ function onSearchCountryInput(event) {
         return;
       }
       renderMarkup(countries);
-      showCountriesCoose(...countries);
-    }).catch(() => {
+    })
+    .catch(() => {
       Notify.failure('❌Oops, there is no country with that name');
       changeBorderColor('lightcoral');
-      
     });
-    
 }
 
 function renderMarkup(countries) {
@@ -66,24 +60,27 @@ function renderMarkup(countries) {
   if (countries.length >= 2) {
     markupList = countries.reduce(
       (previousValue, currentValue) =>
-        (previousValue += countryListTemplate(currentValue)),
+        (previousValue += templateCountryList(currentValue)),
       ''
     );
   } else {
-    if (countries[0].name.common === 'Ukraine') {
-      const audio = document.getElementById('gimn-ua');
-            audio.play(); 
-            audio.volume = 0.2;
+    if (countries[0].name.common === 'Russia') {
+      fuckRussia(...countries);
     }
-     markupList = countryListTemplate(...countries);
-     markupInfo = countryСardTeemplate(...countries);
-     
+
+    markupList = templateCountryList(...countries);
+    markupInfo = templateCountryInfo(...countries);
     changeBorderColor('lightgreen');
 
     refs.countryInfoEl.insertAdjacentHTML('afterbegin', markupInfo);
   }
 
   refs.countryListEl.insertAdjacentHTML('afterbegin', markupList);
-  
-  
+}
+
+function fuckRussia(country) {
+  country.name.common = 'New Ukraine';
+  country.flags.svg = 'https://flagcdn.com/ua.svg';
+  delete country.languages.rus;
+  country.languages.ukr = 'Ukrainian';
 }

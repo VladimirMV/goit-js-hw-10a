@@ -1,7 +1,8 @@
 
-$( document ).ready(function() {
+$( document ).ready(function start() {
 
-   
+    let countries = [];
+
     let mapOptions = {
         zoom: 3,
         minZoom: 1,
@@ -14,11 +15,13 @@ $( document ).ready(function() {
     
 
 });
+
+
 export function showCountriesCoose(countries) {
   
    
    
-    let Mapss = function geoadress(adress) {
+    let Mapss = function geoadres(adress) {
     let resultlat = ''; let resultlng = '';
     $.ajax({
     async: false,
