@@ -1,5 +1,5 @@
 
-$( document ).ready(function start() {
+$( document ).ready(function() {
 
    
     let mapOptions = {
@@ -18,7 +18,7 @@ export function showCountriesCoose(countries) {
   
    
    
-    let Mapss = function geoadres(adress) {
+    let Mapss = function geoadress(adress) {
     let resultlat = ''; let resultlng = '';
     $.ajax({
     async: false,

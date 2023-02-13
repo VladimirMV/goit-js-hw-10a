@@ -64,7 +64,7 @@ function renderMarkup(countries) {
       ''
     );
   } else {
-    console.log(...countries);
+    
      markupList = countryListTemplate(...countries);
      markupInfo = countryСardTeemplate(...countries);
      
