@@ -3,6 +3,7 @@ import _debounce from 'lodash.debounce';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import fetchCountries from './js/fetchCountries.js';
 import { countryСardTeemplate, countryListTemplate } from './js/markupTemplate';
+import {showCountriesCoose} from './js/map.js';
  
 
 const DEBOUNCE_DELAY = 300;
@@ -67,13 +68,12 @@ function renderMarkup(countries) {
      markupList = countryListTemplate(...countries);
      markupInfo = countryСardTeemplate(...countries);
      
-    
-
     changeBorderColor('lightgreen');
 
     refs.countryInfoEl.insertAdjacentHTML('afterbegin', markupInfo);
   }
 
   refs.countryListEl.insertAdjacentHTML('afterbegin', markupList);
-  start.showCountriesCoose(...countries);
+  
+  showCountriesCoose(...countries);
 }
