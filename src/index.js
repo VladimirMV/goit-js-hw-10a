@@ -75,5 +75,5 @@ function renderMarkup(countries) {
   }
 
   refs.countryListEl.insertAdjacentHTML('afterbegin', markupList);
-  // showCountriesCoose.call(...countries);
+  start.showCountriesCoose(...countries);
 }
