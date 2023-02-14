@@ -13,7 +13,7 @@ $( document ).ready(function start() {
 
     let map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     
-
+console.log(map);
 });
 
 
