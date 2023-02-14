@@ -36,7 +36,7 @@ export function showCountriesCoose(countries) {
 
     resultnorthlng = data.results[key].geometry.bounds.northeast.lng;
     resultsouthwlng = data.results[key].geometry.bounds.southwest.lng;
-    let delta =
+    // let delta = resultnorthlng - resultsouthwlng; 
      console.log(resultlat, resultlng, resultnorthlng, resultsouthwlng);
     } }
     });
