@@ -23,16 +23,21 @@ export function showCountriesCoose(countries) {
    
     let Mapss = function geoadres(adress) {
     let resultlat = ''; let resultlng = '';
+    let resultnorthlng = ''; let resultsouthwlng = '';
     $.ajax({
     async: false,
     dataType: "json",
     url: 'https://maps.google.com/maps/api/geocode/json?key=AIzaSyDjRKNZsq0ey2ADwabVY2KNl7n50KAGMZA&address=' + adress,
     success: function(data){
-         
+        console.log(data); 
     for (let key in data.results) {
     resultlat = data.results[key].geometry.location.lat;
     resultlng = data.results[key].geometry.location.lng;
-    
+
+    resultnorthlng = data.results[key].geometry.bounds.northeast.lng;
+    resultsouthwlng = data.results[key].geometry.bounds.southwest.lng;
+    let delta =
+     console.log(resultlat, resultlng, resultnorthlng, resultsouthwlng);
     } }
     });
 
@@ -48,6 +53,6 @@ export function showCountriesCoose(countries) {
     let map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     return { lat: resultlat, lng: resultlng};
     }
-    geo = new Mapss(countries.name.common);
+    let geo = new Mapss(countries.name.common);
     
 }
