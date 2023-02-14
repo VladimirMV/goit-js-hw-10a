@@ -19,13 +19,7 @@ body {
   line-height: 1.5;
 }
 
-/* #map-canvas {
-  height: 100%;
-  margin: auto;
-  padding: 0;
-  height: 600px;
-  
-} */
+
 .header__container {
    
   position: absolute;
@@ -97,7 +91,7 @@ body {
 }
 
 .weight {
-  font-weight: 700};
+  font-weight: 700}
 
   
   .country-info{
