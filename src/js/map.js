@@ -24,6 +24,8 @@ export function showCountriesCoose(countries) {
     let Mapss = function geoadres(adress) {
     let resultlat = ''; let resultlng = '';
     let resultnorthlng = ''; let resultsouthwlng = '';
+    let resultnorthlat = ''; let resultsouthwlat = '';
+    let zoom1 = 3;
     $.ajax({
     async: false,
     dataType: "json",
@@ -33,26 +35,42 @@ export function showCountriesCoose(countries) {
     for (let key in data.results) {
     resultlat = data.results[key].geometry.location.lat;
     resultlng = data.results[key].geometry.location.lng;
+   
 
+    resultnorthlat = data.results[key].geometry.bounds.northeast.lat;
     resultnorthlng = data.results[key].geometry.bounds.northeast.lng;
+
+    resultsouthwlat = data.results[key].geometry.bounds.southwest.lat;
     resultsouthwlng = data.results[key].geometry.bounds.southwest.lng;
-    // let delta = resultnorthlng - resultsouthwlng; 
-     console.log(resultlat, resultlng, resultnorthlng, resultsouthwlng);
+     let deltax = resultnorthlng - resultsouthwlng; 
+     let deltay = resultnorthlat - resultsouthwlat;
+
+    
+   let diagonal = Math.sqrt(deltax*deltax + deltay*deltay);
+   
+    zoom1 = Math.round(Math.log(360/diagonal)/Math.log(2))*1.4;
+    if(zoom1 < 3) zoom1 = 3;
+    if(zoom1 > 15) zoom1 = 15;
+    
+      
     } }
     });
 
     
     let mapOptions = {
-        zoom: 5,
+        zoom:  zoom1,
         minZoom: 1,
         center: new google.maps.LatLng(resultlat,resultlng),
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         backgroundColor: 'none'
     };
-
+  
+    console.log(mapOptions);
+    
     let map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     return { lat: resultlat, lng: resultlng};
     }
     let geo = new Mapss(countries.name.common);
+    console.log(geo);
     
 }
