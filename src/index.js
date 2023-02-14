@@ -48,7 +48,7 @@ function onSearchCountryInput(event) {
         return;
       }
       renderMarkup(countries);
-      // showCountriesCoose(...countries);
+      showCountriesCoose(...countries);
     }).catch(() => {
       Notify.failure('❌Oops, there is no country with that name');
       changeBorderColor('lightcoral');

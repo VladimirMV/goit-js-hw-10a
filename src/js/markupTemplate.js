@@ -1,14 +1,10 @@
 export function countryСardTeemplate({ flags, name, capital, population, languages }) {
     return `
-      
-    
         <p class="country-info"><span class="weight">Capital:</span> ${capital}</p>
         <p class="country-info"><span class="weight">Population:</span> ${population}</p>
         <p class="country-info"><span class="weight">Languages:</span> ${Object.values(
           languages,
-        )}</p>
-      
-    `;
+        )}</p>`;
   }
   
   export function countryListTemplate({ flags, name }) {
