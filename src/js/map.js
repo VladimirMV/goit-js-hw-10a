@@ -72,6 +72,6 @@ export function showCountriesCoose(countries) {
     return { lat: resultlat, lng: resultlng};
     }
     let geo = new Mapss(countries.name.common);
-    console.log(geo);
+    
     
 }
