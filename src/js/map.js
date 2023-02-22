@@ -1,5 +1,5 @@
 
-export function start() {
+export function startMap() {
 
      
     let countries = [];
