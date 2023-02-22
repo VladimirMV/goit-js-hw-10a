@@ -4,6 +4,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import fetchCountries from './js/fetchCountries.js';
 import { countryСardTeemplate, countryListTemplate } from './js/markupTemplate';
 import {showCountriesCoose} from './js/map.js';
+ 
 
  
 
@@ -23,8 +24,8 @@ refs.inputEl.addEventListener(
 
 const clearMarkup = element => (element.innerHTML = '');
 const changeBorderColor = color => (refs.inputEl.style.backgroundColor = color);
-
-
+// console.log("iNIT MAP ВІЗОВ=====" );
+//  initMap(37.7749, -122.4194);
 function onSearchCountryInput(event) {
   clearMarkup(refs.countryListEl);
   clearMarkup(refs.countryInfoEl);

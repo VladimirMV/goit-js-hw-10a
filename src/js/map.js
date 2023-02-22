@@ -1,6 +1,7 @@
 
 $( document ).ready(function start() {
 
+     
     let countries = [];
 
     let mapOptions = {
