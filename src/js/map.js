@@ -1,5 +1,5 @@
 
-$( document ).ready(function start() {
+$( document ).ready( function start() {
 
      
     let countries = [];
