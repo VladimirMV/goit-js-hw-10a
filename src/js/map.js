@@ -14,7 +14,7 @@ $( document ).ready(function start() {
 
     let map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     
-console.log(map);
+// console.log(map);
 });
 
 
@@ -66,7 +66,7 @@ export function showCountriesCoose(countries) {
         backgroundColor: 'none'
     };
   
-    console.log(mapOptions);
+    // console.log(mapOptions);
     
     let map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     return { lat: resultlat, lng: resultlng};
