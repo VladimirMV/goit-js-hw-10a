@@ -3,7 +3,7 @@ import _debounce from 'lodash.debounce';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import fetchCountries from './js/fetchCountries.js';
 import { countryСardTeemplate, countryListTemplate } from './js/markupTemplate';
-import {showCountriesCoose} from './js/map.js';
+import {showCountriesCoose, start} from './js/map.js';
  
 
  
@@ -21,7 +21,7 @@ refs.inputEl.addEventListener(
   'input',
   _debounce(onSearchCountryInput, DEBOUNCE_DELAY)
 );
-
+start();
 const clearMarkup = element => (element.innerHTML = '');
 const changeBorderColor = color => (refs.inputEl.style.backgroundColor = color);
 // console.log("iNIT MAP ВІЗОВ=====" );

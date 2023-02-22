@@ -1,5 +1,5 @@
 
-$( document ).ready( function start() {
+export function start() {
 
      
     let countries = [];
@@ -14,8 +14,8 @@ $( document ).ready( function start() {
 
     let map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     
-// console.log(map);
-});
+ 
+};
 
 
 export function showCountriesCoose(countries) {
