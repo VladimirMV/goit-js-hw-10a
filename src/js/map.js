@@ -1,21 +1,21 @@
 
-// export function startMap() {
+export function startMap() {
 
      
-//     let countries = [];
+    let countries = [];
 
-//     let mapOptions = {
-//         zoom: 3,
-//         minZoom: 1,
-//         center: new google.maps.LatLng(50.7244893,3.2668189),
-//         mapTypeId: google.maps.MapTypeId.ROADMAP,
-//         backgroundColor: 'none'
-//     };
+    let mapOptions = {
+        zoom: 3,
+        minZoom: 1,
+        center: new google.maps.LatLng(50.7244893,3.2668189),
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        backgroundColor: 'none'
+    };
 
-//     let map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+    let map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     
  
-// };
+};
 
 
 export function showCountriesCoose(countries) {
